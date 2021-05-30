@@ -23,4 +23,10 @@ typedef struct usuario
   TEndereco endereco;
   TDate data_nascimento;
   char tipo_usuario;
-};
+} TUsuario;
+
+typedef struct usuarios
+{
+  TUsuario usuario[100];
+  int indice;
+} TUsuarios;
