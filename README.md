@@ -1,1 +1,1 @@
-gcc main.c -o biblioteca && ./biblioteca
+gcc src/main.c -o biblioteca && ./biblioteca
