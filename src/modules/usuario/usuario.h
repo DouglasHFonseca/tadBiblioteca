@@ -1,6 +1,10 @@
 #ifndef USUARIO_H_INCLUDED
 #define USUARIO_H_INCLUDED
 
+#include <stdio.h>
+#include <stdlib.h>
+#include <stdio_ext.h>
+
 typedef struct data
 {
   int dia;

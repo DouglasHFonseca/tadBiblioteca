@@ -10,25 +10,24 @@ void lerUsuario(TUsuario *usuario)
   {
     printf("\nDigite o Nome: ");
     __fpurge(stdin);
-    fgets(usuario->nome, 20, stdin);
+    fgets(usuario->nome, 30, stdin);
 
     printf("\nDigite o Sobrenome: ");
     __fpurge(stdin);
-    fgets(usuario->sobrenome, 20, stdin);
+    fgets(usuario->sobrenome, 30, stdin);
 
     printf("\nDigite o CPF: ");
     __fpurge(stdin);
-    fgets(usuario->cpf, 20, stdin);
+    fgets(usuario->cpf, 14, stdin);
 
     printf("\nDigite a identidade: ");
     __fpurge(stdin);
-    fgets(usuario->identidade, 20, stdin);
+    fgets(usuario->identidade, 11, stdin);
   }
 
   // Data de Nascimento
   printf("\n---Data de Nascimento---\n");
   {
-
     printf("\nDigite o dia: ");
     __fpurge(stdin);
     scanf("%d", &usuario->data_nascimento.dia);
@@ -69,18 +68,18 @@ void lerUsuario(TUsuario *usuario)
   printf("\nSelecione o Tipo de Usuário: ");
   {
     int option;
-    printf("\n1 - Aluno\n2 - Professor");
-    __fpurge(stdin);
-    scanf("%d", &option);
 
-    if (option != 1 || option != 2)
+    while (option != 1 && option != 2)
     {
-      printf("Opção invalida");
+      printf("\n1 - Aluno\n2 - Professor\n");
+      __fpurge(stdin);
+      scanf("%d", &option);
+      if (option != 1 && option != 2)
+      {
+        printf("Opção invalida");
+      }
     }
-    else
-    {
-      usuario->tipo_usuario = option;
-    }
+    usuario->tipo_usuario = option;
   }
 }
 
@@ -102,7 +101,11 @@ void imprimirUsuario(TUsuario usuario)
   printf("%d/%d/%d\n", usuario.data_nascimento.dia, usuario.data_nascimento.mes, usuario.data_nascimento.ano);
 
   printf("\nEndereço:\n");
-  printf("- Logradouro: %s\n- Numero: %d\n- Bairro: %s\n- Cidade: %s\n- CEP: %s\n\n");
+  printf("- Logradouro: %s- Numero: %d- Bairro: %s- Cidade: %s- CEP: %s",
+         usuario.endereco.logradouro, usuario.endereco.numero, usuario.endereco.bairro, usuario.endereco.cidade, usuario.endereco.cep);
+
+  printf("\nTipo Usuário: ");
+  usuario.tipo_usuario = 1 ? printf("Aluno\n") : printf("Professor\n");
 }
 
 void alterarUsuario()

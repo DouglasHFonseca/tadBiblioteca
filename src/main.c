@@ -5,6 +5,7 @@
 int main(void)
 {
   int option;
+  TUsuario usuario;
 
   printf("TAD - Biblioteca\n");
   printf("---------------------\n");
@@ -14,7 +15,8 @@ int main(void)
   switch (option)
   {
   case 1:
-    cadastrarUsuario();
+    lerUsuario(&usuario);
+    imprimirUsuario(usuario);
     break;
   case 2:
     break;
