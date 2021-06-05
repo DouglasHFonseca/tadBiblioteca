@@ -1,7 +1,7 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <stdio_ext.h>
-#include "functions.h"
+#include "usuario.h"
 
 void cadastrarUsuario()
 {

@@ -1,10 +1,5 @@
-#ifndef FUNCTIONS_H_INCLUDED
-#define FUNCTIONS_H_INCLUDED
-
-#include <stdio.h>
-#include <stdlib.h>
-
-void cadastrarUsuario();
+#ifndef USUARIO_H_INCLUDED
+#define USUARIO_H_INCLUDED
 
 typedef struct data
 {
@@ -12,25 +7,6 @@ typedef struct data
   int mes;
   int ano;
 } TDate;
-
-typedef struct livro
-{
-  char ISBN[20];
-  char titulo[100];
-  char editora[100];
-  char local[100];
-  TDate data_pub;
-  char prim_autor[100];
-  char seg_autor[100];
-  int quantidade;
-  int quant_emprestados;
-} TLivro;
-
-typedef struct biblioteca
-{
-  TLivro livros[100];
-  int indice;
-} TBiblioteca;
 
 typedef struct endereco
 {
@@ -58,4 +34,4 @@ typedef struct usuarios
   int indice;
 } TUsuarios;
 
-#endif // FUNCTIONS_H_INCLUDED
+#endif // USUARIO_H_INCLUDED
