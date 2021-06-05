@@ -6,11 +6,11 @@ typedef struct data
   int dia;
   int mes;
   int ano;
-} TDate;
+} TData;
 
 typedef struct endereco
 {
-  char loagadrouro[100];
+  char logradouro[100];
   int numero;
   char bairro[100];
   char cidade[100];
@@ -24,8 +24,8 @@ typedef struct usuario
   char sobrenome[30];
   char identidade[11];
   TEndereco endereco;
-  TDate data_nascimento;
-  char tipo_usuario[10];
+  TData data_nascimento;
+  int tipo_usuario;
 } TUsuario;
 
 typedef struct usuarios
@@ -33,5 +33,10 @@ typedef struct usuarios
   TUsuario usuario[100];
   int indice;
 } TUsuarios;
+
+// Operações
+void lerUsuario(TUsuario *usuario);
+void imprimirUsuario(TUsuario usuario);
+void iniciarListaUsuarios(TUsuarios *usuarios);
 
 #endif // USUARIO_H_INCLUDED
