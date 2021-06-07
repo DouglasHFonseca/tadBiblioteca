@@ -27,4 +27,8 @@ typedef struct biblioteca
   int indice;
 } TBiblioteca;
 
+// Operações Básicas
+void lerLivro(TLivro *livro);
+void imprimirLivro(TLivro livro);
+void iniciarListaLivro(TBiblioteca *biblioteca);
 #endif // LIVRO_H_INCLUDED

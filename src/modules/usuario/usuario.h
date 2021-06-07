@@ -38,7 +38,7 @@ typedef struct usuarios
   int indice;
 } TUsuarios;
 
-// Operações
+// Operações Básicas
 void lerUsuario(TUsuario *usuario);
 void imprimirUsuario(TUsuario usuario);
 void iniciarListaUsuarios(TUsuarios *usuarios);
