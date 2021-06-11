@@ -1,5 +1,7 @@
 .vscode
 util
+biblioteca
+.bin
 
 # Compiled source #
 ###################
@@ -9,3 +11,5 @@ util
 *.exe
 *.o
 *.so
+*.bin
+*.run
