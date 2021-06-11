@@ -89,26 +89,34 @@ void imprimirLivro(TLivro livro)
   printf("%d", livro.quantidade);
 }
 
-void iniciarListaLivro(TBiblioteca *biblioteca)
+void iniciarListaLivro(TModuloLivro *biblioteca)
 {
   biblioteca->indice = 0;
 }
 
-void cadastrarLivro(TLivro livro, TBiblioteca *biblioteca)
+int cadastrarLivro(TLivro livro, TModuloLivro *biblioteca)
 {
-  biblioteca->livros[biblioteca->indice] = livro;
-  biblioteca->indice++;
-}
-
-void imprimirTodos(TBiblioteca *biblioteca)
-{
-  for (int i = 0; i < biblioteca->indice; i++)
+  if (biblioteca->indice == 100)
   {
-    imprimirLivro(biblioteca->livros[i]);
+    return 0;
+  }
+  else
+  {
+    biblioteca->livros[biblioteca->indice] = livro;
+    biblioteca->indice++;
+    return 1;
   }
 }
 
-int pesquisarIdLivro(char ISBN[20], TBiblioteca *biblioteca)
+void imprimirTodos(TModuloLivro biblioteca)
+{
+  for (int i = 0; i < biblioteca.indice; i++)
+  {
+    imprimirLivro(biblioteca.livros[i]);
+  }
+}
+
+int pesquisarIdLivro(char ISBN[20], TModuloLivro *biblioteca)
 {
   int response = 0;
   for (int i = 0; i < biblioteca->indice; i++)
@@ -127,7 +135,7 @@ int pesquisarIdLivro(char ISBN[20], TBiblioteca *biblioteca)
   return response;
 }
 
-void excluirLivro(int posicao, TBiblioteca *biblioteca)
+void excluirLivro(int posicao, TModuloLivro *biblioteca)
 {
   if (posicao == biblioteca->indice - 1)
   {

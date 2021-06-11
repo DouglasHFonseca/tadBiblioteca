@@ -5,12 +5,7 @@
 #include <stdlib.h>
 #include <stdio_ext.h>
 
-typedef struct data
-{
-  int dia;
-  int mes;
-  int ano;
-} TData;
+#include "livro.h"
 
 typedef struct endereco
 {
@@ -36,11 +31,11 @@ typedef struct usuarios
 {
   TUsuario usuario[100];
   int indice;
-} TUsuarios;
+} TModuloUsuario;
 
 // Operações Básicas
 void lerUsuario(TUsuario *usuario);
 void imprimirUsuario(TUsuario usuario);
-void iniciarListaUsuarios(TUsuarios *usuarios);
+void iniciarListaUsuarios(TModuloUsuario *usuarios);
 
 #endif // USUARIO_H_INCLUDED
