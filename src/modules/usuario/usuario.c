@@ -108,7 +108,7 @@ void imprimirUsuario(TUsuario usuario)
   usuario.tipo_usuario = 1 ? printf("Aluno\n") : printf("Professor\n");
 }
 
-void iniciarListaUsuarios(TUsuarios *usuarios)
+void iniciarListaUsuarios(TModuloUsuario *usuarios)
 {
   usuarios->indice = 0;
 }

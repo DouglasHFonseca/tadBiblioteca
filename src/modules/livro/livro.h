@@ -1,6 +1,10 @@
 #ifndef LIVRO_H_INCLUDED
 #define LIVRO_H_INCLUDED
 
+#include <stdio.h>
+#include <stdlib.h>
+#include <stdio_ext.h>
+
 typedef struct data
 {
   int dia;
@@ -34,6 +38,6 @@ void iniciarListaLivro(TModuloLivro *biblioteca);
 int cadastrarLivro(TLivro livro, TModuloLivro *biblioteca);
 void imprimirTodos(TModuloLivro biblioteca);
 int pesquisarIdLivro(char ISBN[20], TModuloLivro *biblioteca);
-void excluirLivro(int posicao, TModuloLivro *biblioteca);
+int excluirLivro(int posicao, TModuloLivro *biblioteca);
 
 #endif // LIVRO_H_INCLUDED

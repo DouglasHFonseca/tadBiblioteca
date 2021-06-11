@@ -4,8 +4,7 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <stdio_ext.h>
-
-#include "livro.h"
+#include "../livro/livro.h"
 
 typedef struct endereco
 {

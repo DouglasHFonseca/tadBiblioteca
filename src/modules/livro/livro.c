@@ -135,7 +135,7 @@ int pesquisarIdLivro(char ISBN[20], TModuloLivro *biblioteca)
   return response;
 }
 
-void excluirLivro(int posicao, TModuloLivro *biblioteca)
+int excluirLivro(int posicao, TModuloLivro *biblioteca)
 {
   if (posicao == biblioteca->indice - 1)
   {
