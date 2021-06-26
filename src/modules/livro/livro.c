@@ -89,39 +89,39 @@ void imprimirLivro(TLivro livro)
   printf("%d", livro.quantidade);
 }
 
-void iniciarListaLivro(TModuloLivro *biblioteca)
+void iniciarListaLivro(TModuloLivro *modulo1)
 {
-  biblioteca->indice = 0;
+  modulo1->indice = 0;
 }
 
-int cadastrarLivro(TLivro livro, TModuloLivro *biblioteca)
+int cadastrarLivro(TLivro livro, TModuloLivro *modulo1)
 {
-  if (biblioteca->indice == 100)
+  if (modulo1->indice == 100)
   {
     return 0;
   }
   else
   {
-    biblioteca->livros[biblioteca->indice] = livro;
-    biblioteca->indice++;
+    modulo1->livros[modulo1->indice] = livro;
+    modulo1->indice++;
     return 1;
   }
 }
 
-void imprimirTodos(TModuloLivro biblioteca)
+void imprimirTodos(TModuloLivro modulo1)
 {
-  for (int i = 0; i < biblioteca.indice; i++)
+  for (int i = 0; i < modulo1.indice; i++)
   {
-    imprimirLivro(biblioteca.livros[i]);
+    imprimirLivro(modulo1.livros[i]);
   }
 }
 
-int pesquisarIdLivro(char ISBN[20], TModuloLivro *biblioteca)
+int pesquisarIdLivro(TLivro livro, TModuloLivro *modulo1)
 {
   int response = 0;
-  for (int i = 0; i < biblioteca->indice; i++)
+  for (int i = 0; i < modulo1->indice; i++)
   {
-    if (strcmp(biblioteca->livros[i].ISBN, ISBN) == 0)
+    if (strcmp(modulo1->livros[i].ISBN, livro.ISBN) == 0)
     {
       response = i;
       break;
@@ -135,15 +135,20 @@ int pesquisarIdLivro(char ISBN[20], TModuloLivro *biblioteca)
   return response;
 }
 
-int excluirLivro(int posicao, TModuloLivro *biblioteca)
+void alterarLivro(int indice, TLivro livro, TModuloLivro *modulo1)
 {
-  if (posicao == biblioteca->indice - 1)
+  modulo1->livros[indice] = livro;
+}
+
+int excluirLivro(int posicao, TModuloLivro *modulo1)
+{
+  if (posicao == modulo1->indice - 1)
   {
-    return biblioteca->indice - 1;
+    return modulo1->indice - 1;
   }
   else
   {
-    biblioteca->livros[posicao] = biblioteca->livros[posicao + 1];
-    return excluirLivro(posicao + 1, biblioteca);
+    modulo1->livros[posicao] = modulo1->livros[posicao + 1];
+    return excluirLivro(posicao + 1, modulo1);
   }
 }

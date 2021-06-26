@@ -1,32 +1,54 @@
 #include <stdio.h>
 #include <stdlib.h>
-#include "./modules/usuario/usuario.h"
+#include <stdio_ext.h>
 
-int main(void)
+#include "interface.h"
+
+int main()
 {
-  int option;
+
+  TLivro livro;
+  TModuloLivro modulo1;
   TUsuario usuario;
+  TModuloUsuario modulo2;
+  TEmprestimo emprestimo;
+  TModuloEmprestimo modulo3;
+  Iniciar(&modulo1);
 
-  printf("TAD - Biblioteca\n");
-  printf("---------------------\n");
-  printf("1 - Cadastrar Usuário\n2 - Cadastrar Livro\n3 - Alugar Livro\n4 - Devolver Livro\n");
-  scanf("%d", &option);
-
-  switch (option)
+  int opcao = 0;
+  do
   {
-  case 1:
-    lerUsuario(&usuario);
-    imprimirUsuario(usuario);
-    break;
-  case 2:
-    break;
-  case 3:
-    break;
-  case 4:
-    break;
-  default:
-    break;
-  }
+    system("clear");
+    MSG_MENU();
+    printf("\n\nDigite uma opcao: ");
+    fflush(stdin);
+    scanf("%d", &opcao);
+    switch (opcao)
+    {
+    case 1:
+      // Chamada de Função para o submenu do Módulo I
+      SubMenuModulo1(&modulo1, livro);
+      break;
+    case 2:
+      // Chamada de Função para o submenu do Módulo II
+      SubMenuModulo2(&modulo2, usuario);
+      break;
+    case 3:
+      // Chamada de Função para o submenu do Módulo III
+      SubMenuModulo3(&modulo3, emprestimo);
+      break;
+    case 5:
+      system("clear");
+      printf("\n\n\n\t >>>>>> MSG: Saindo do programa...!!! <<<<<<");
+      system("PAUSE");
+      break;
+    default:
+      system("clear");
+      printf("\n\n\n\t >>>>>> MSG: Digite uma opcao valida!!! <<<<<<");
+      system("PAUSE");
+    }
+  } while (opcao != 3);
+
+  system("PAUSE");
 
   return 0;
-}

@@ -4,7 +4,7 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <stdio_ext.h>
-#include "../livro/livro.h"
+#include "data.h"
 
 typedef struct endereco
 {
@@ -26,7 +26,7 @@ typedef struct usuario
   int tipo_usuario;
 } TUsuario;
 
-typedef struct usuarios
+typedef struct modulo2
 {
   TUsuario usuario[100];
   int indice;

@@ -4,13 +4,7 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <stdio_ext.h>
-
-typedef struct data
-{
-  int dia;
-  int mes;
-  int ano;
-} TData;
+#include "data.h"
 
 typedef struct livro
 {
@@ -25,7 +19,7 @@ typedef struct livro
   int quant_emprestados;
 } TLivro;
 
-typedef struct biblioteca
+typedef struct modulo1
 {
   TLivro livros[100];
   int indice;
@@ -34,10 +28,11 @@ typedef struct biblioteca
 // Operações Básicas
 void lerLivro(TLivro *livro);
 void imprimirLivro(TLivro livro);
-void iniciarListaLivro(TModuloLivro *biblioteca);
-int cadastrarLivro(TLivro livro, TModuloLivro *biblioteca);
-void imprimirTodos(TModuloLivro biblioteca);
-int pesquisarIdLivro(char ISBN[20], TModuloLivro *biblioteca);
-int excluirLivro(int posicao, TModuloLivro *biblioteca);
+void iniciarListaLivro(TModuloLivro *modulo1);
+int cadastrarLivro(TLivro livro, TModuloLivro *modulo1);
+void imprimirTodos(TModuloLivro modulo1);
+int pesquisarIdLivro(TLivro livro, TModuloLivro *modulo1);
+void alterarLivro(int indice, TLivro livro, TModuloLivro *modulo1);
+int excluirLivro(int posicao, TModuloLivro *modulo1);
 
 #endif // LIVRO_H_INCLUDED
