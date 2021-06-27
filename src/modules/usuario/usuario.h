@@ -28,7 +28,7 @@ typedef struct usuario
 
 typedef struct modulo2
 {
-  TUsuario usuario[100];
+  TUsuario usuarios[100];
   int indice;
 } TModuloUsuario;
 
@@ -36,5 +36,10 @@ typedef struct modulo2
 void lerUsuario(TUsuario *usuario);
 void imprimirUsuario(TUsuario usuario);
 void iniciarListaUsuarios(TModuloUsuario *usuarios);
+int cadastrarUsuario(TUsuario usuario, TModuloUsuario *modulo2);
+void imprimirTodosUsuarios(TModuloUsuario *modulo2);
+int pesquisarIdUsuario(TUsuario usuario, TModuloUsuario *modulo2);
+void alterarUsuario(int indice, TUsuario usuario, TModuloUsuario *modulo2);
+int excluirUsuario(int index, TModuloUsuario *modulo2);
 
 #endif // USUARIO_H_INCLUDED

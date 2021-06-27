@@ -3,6 +3,9 @@
 #include <stdio_ext.h>
 
 #include "interface.h"
+#include "livro.h"
+#include "usuario.h"
+#include "emprestimo.h"
 
 void MSG_MENU()
 {
@@ -25,7 +28,7 @@ void MSG_SUBMENU(int numero_modulo)
   printf("  \n\t6. SAIR");
 }
 
-void SubMenuModulo1(TModuloLivro *modulo1, TLivro book)
+void SubMenuModulo1(TModuloLivro *modulo1, TLivro livro)
 {
   int opcao = 0;
   int i;
@@ -38,29 +41,52 @@ void SubMenuModulo1(TModuloLivro *modulo1, TLivro book)
     switch (opcao)
     {
     case 1:
-      /**
-                    Código para opção de menu Cadastrar
-                */
+      lerLivro(&livro);
+      if (cadastrarLivro(livro, modulo1) == 1)
+      {
+        printf("Livro cadastrado com sucesso");
+      }
+      else
+      {
+        printf("Não foi possível cadastrar o livro, limite atingido!");
+      }
       break;
     case 2:
-      /**
-                    Código para opção de menu PesquisarLivro
-                */
+      lerLivro(&livro);
+      if (pesquisarIdLivro(livro, modulo1) == -1)
+      {
+        printf("Livro não encontrado");
+      }
+      else
+      {
+        imprimirLivro(modulo1->livros[pesquisarIdLivro(livro, modulo1)]);
+      }
       break;
     case 3:
-      /**
-                    Código para opção de menu Alterar
-                */
+      lerLivro(&livro);
+      if (pesquisarIdLivro(livro, modulo1) == -1)
+      {
+        printf("Livro não encontrado para alteração");
+      }
+      else
+      {
+        alterarLivro(pesquisarIdLivro(livro, modulo1), livro, modulo1);
+      }
       break;
     case 4:
-      /**
-                    Código para opção de menu Excluir
-                */
+      lerLivro(&livro);
+      int i = pesquisarIdLivro(livro, modulo1);
+      if (i == -1)
+      {
+        printf("Não há como excluir um livro que não está cadastrado!");
+      }
+      else
+      {
+        excluirLivro(i, modulo1);
+      }
       break;
     case 5:
-      /**
-                    Código para opção de menu Imprimir 2
-                */
+      imprimirTodosLivros(modulo1);
       break;
     case 6:
       system("clear");
@@ -75,7 +101,7 @@ void SubMenuModulo1(TModuloLivro *modulo1, TLivro book)
   } while (opcao != 6);
 }
 
-void SubMenuModulo2(TModuloUsuario *modulo2, TLivro usuario)
+void SubMenuModulo2(TModuloUsuario *modulo2, TUsuario usuario)
 {
   int opcao = 0;
   int i;
@@ -88,29 +114,52 @@ void SubMenuModulo2(TModuloUsuario *modulo2, TLivro usuario)
     switch (opcao)
     {
     case 1:
-      /**
-                    Código para opção de menu Cadastrar
-                */
+      lerUsuario(&usuario);
+      if (cadastrarUsuario(usuario, modulo2) == 1)
+      {
+        printf("Usuário cadastrado com sucesso!");
+      }
+      else
+      {
+        printf("Não foi possível cadastrar o usuário, limite atingido!");
+      }
       break;
     case 2:
-      /**
-                    Código para opção de menu PesquisarLivro
-                */
+      lerUsuario(&usuario);
+      if (pesquisarIdUsuario(usuario, modulo2) == -1)
+      {
+        printf("Usuário não encontrado");
+      }
+      else
+      {
+        imprimirUsuario(modulo2->usuarios[pesquisarIdUsuario(usuario, modulo2)]);
+      }
       break;
     case 3:
-      /**
-                    Código para opção de menu Alterar
-                */
+      lerUsuario(&usuario);
+      if (pesquisarIdUsuario(usuario, modulo2) == -1)
+      {
+        printf("Usuário não encontrado");
+      }
+      else
+      {
+        alterarUsuario(pesquisarIdUsuario(usuario, modulo2), usuario, modulo2);
+      }
       break;
     case 4:
-      /**
-                    Código para opção de menu Excluir
-                */
+      lerUsuario(&usuario);
+      int i = pesquisarIdUsuario(usuario, modulo2);
+      if (i == -1)
+      {
+        printf("Não há como excluir um usuário que não está cadastrado!");
+      }
+      else
+      {
+        excluirUsuario(i, modulo2);
+      }
       break;
     case 5:
-      /**
-                    Código para opção de menu Imprimir 2
-                */
+      imprimirTodosUsuarios(modulo2);
       break;
     case 6:
       system("clear");
@@ -125,7 +174,7 @@ void SubMenuModulo2(TModuloUsuario *modulo2, TLivro usuario)
   } while (opcao != 6);
 }
 
-void SubMenuModulo1(TModuloEmprestimo *modulo3, TLivro emprestimo)
+void SubMenuModulo3(TModuloEmprestimo *modulo3, TEmprestimo emprestimo)
 {
   int opcao = 0;
   int i;
@@ -138,29 +187,52 @@ void SubMenuModulo1(TModuloEmprestimo *modulo3, TLivro emprestimo)
     switch (opcao)
     {
     case 1:
-      /**
-                    Código para opção de menu Cadastrar
-                */
+      lerEmprestimo(&emprestimo);
+      if (cadastrarEmprestimos(emprestimo, modulo3) == 1)
+      {
+        printf("Emprestimo realizado com sucesso!");
+      }
+      else
+      {
+        printf("Não foi possível o emprestimo, limite atingido!");
+      }
       break;
     case 2:
-      /**
-                    Código para opção de menu PesquisarLivro
-                */
+      lerEmprestimo(&emprestimo);
+      if (pesquisarIdEmprestimo(emprestimo, modulo3) == -1)
+      {
+        printf("Emprestimo não encontrado");
+      }
+      else
+      {
+        imprimirEmprestimo(modulo3->emprestimos[pesquisarIdEmprestimo(emprestimo, modulo3)]);
+      }
       break;
     case 3:
-      /**
-                    Código para opção de menu Alterar
-                */
+      lerEmprestimo(&emprestimo);
+      if (pesquisarIdEmprestimo(emprestimo, modulo3) == -1)
+      {
+        printf("Emprestimo não encontrado");
+      }
+      else
+      {
+        alterarEmprestimo(pesquisarIdEmprestimo(emprestimo, modulo3), emprestimo, modulo3);
+      }
       break;
     case 4:
-      /**
-                    Código para opção de menu Excluir
-                */
+      lerEmprestimo(&emprestimo);
+      int i = pesquisarIdEmprestimo(emprestimo, modulo3);
+      if (i == -1)
+      {
+        printf("Não há como excluir um emprestimo que não foi realizado!");
+      }
+      else
+      {
+        excluirEmprestimo(i, modulo3);
+      }
       break;
     case 5:
-      /**
-                    Código para opção de menu Imprimir 2
-                */
+      imprimirTodosEmprestimos(modulo3);
       break;
     case 6:
       system("clear");

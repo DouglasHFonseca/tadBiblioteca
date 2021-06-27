@@ -21,20 +21,17 @@ int main()
     system("clear");
     MSG_MENU();
     printf("\n\nDigite uma opcao: ");
-    fflush(stdin);
+    __fpurge(stdin);
     scanf("%d", &opcao);
     switch (opcao)
     {
     case 1:
-      // Chamada de Função para o submenu do Módulo I
       SubMenuModulo1(&modulo1, livro);
       break;
     case 2:
-      // Chamada de Função para o submenu do Módulo II
       SubMenuModulo2(&modulo2, usuario);
       break;
     case 3:
-      // Chamada de Função para o submenu do Módulo III
       SubMenuModulo3(&modulo3, emprestimo);
       break;
     case 5:

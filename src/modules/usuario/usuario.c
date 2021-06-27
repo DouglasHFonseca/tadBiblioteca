@@ -112,3 +112,44 @@ void iniciarListaUsuarios(TModuloUsuario *usuarios)
 {
   usuarios->indice = 0;
 }
+
+int cadastrarUsuario(TUsuario usuario, TModuloUsuario *modulo2)
+{
+  if (modulo2->indice == 100)
+  {
+    return 0;
+  }
+  else
+  {
+    modulo2->usuarios[modulo2->indice] = usuario;
+    modulo2->indice++;
+    return 1;
+  }
+}
+
+void imprimirTodosUsuarios(TModuloUsuario *modulo2)
+{
+  for (int i = 0; i < modulo2->indice; i++)
+  {
+    imprimirLivro(modulo2->usuarios[i]);
+    printf("\n");
+  }
+}
+
+void alterarLivro(int indice, TUsuario usuario, TModuloUsuario *modulo2)
+{
+  modulo2->usuarios[indice] = usuario;
+}
+
+int excluirLivro(int posicao, TModuloUsuario *modulo2)
+{
+  if (posicao == modulo2->indice - 1)
+  {
+    return modulo2->indice - 1;
+  }
+  else
+  {
+    modulo2->usuarios[posicao] = modulo2->usuarios[posicao + 1];
+    return excluirLivro(posicao + 1, modulo2);
+  }
+}

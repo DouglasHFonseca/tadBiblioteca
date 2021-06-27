@@ -30,7 +30,7 @@ void lerLivro(TLivro *livro);
 void imprimirLivro(TLivro livro);
 void iniciarListaLivro(TModuloLivro *modulo1);
 int cadastrarLivro(TLivro livro, TModuloLivro *modulo1);
-void imprimirTodos(TModuloLivro modulo1);
+void imprimirTodosLivros(TModuloLivro *modulo1);
 int pesquisarIdLivro(TLivro livro, TModuloLivro *modulo1);
 void alterarLivro(int indice, TLivro livro, TModuloLivro *modulo1);
 int excluirLivro(int posicao, TModuloLivro *modulo1);

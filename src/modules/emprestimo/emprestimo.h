@@ -21,4 +21,13 @@ typedef struct modulo3
   int indice;
 } TModuloEmprestimo;
 
+void lerEmprestimo(TEmprestimo *emprestimo);
+void imprimirEmprestimo(TEmprestimo emprestimo);
+void iniciarListaEmprestimos(TModuloEmprestimo *emprestimos);
+int cadastrarEmprestimos(TEmprestimo emprestimo, TModuloEmprestimo *modulo3);
+void imprimirTodosEmprestimos(TModuloEmprestimo *modulo3);
+int pesquisarIdEmprestimo(TEmprestimo emprestimo, TModuloEmprestimo *modulo3);
+void alterarEmprestimo(int indece, TEmprestimo emprestimo, TModuloEmprestimo *modulo3);
+int excluirEmprestimo(int index, TModuloEmprestimo *modulo3);
+
 #endif // EMPRESTIMO_H_INCLUDED

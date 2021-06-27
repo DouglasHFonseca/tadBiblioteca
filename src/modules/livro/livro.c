@@ -108,11 +108,12 @@ int cadastrarLivro(TLivro livro, TModuloLivro *modulo1)
   }
 }
 
-void imprimirTodos(TModuloLivro modulo1)
+void imprimirTodosLivros(TModuloLivro *modulo1)
 {
-  for (int i = 0; i < modulo1.indice; i++)
+  for (int i = 0; i < modulo1->indice; i++)
   {
-    imprimirLivro(modulo1.livros[i]);
+    imprimirLivro(modulo1->livros[i]);
+    printf("\n");
   }
 }
 
