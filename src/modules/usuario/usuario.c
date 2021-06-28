@@ -2,6 +2,7 @@
 #include <stdlib.h>
 #include <stdio_ext.h>
 #include "usuario.h"
+#include <string.h>
 
 void lerUsuario(TUsuario *usuario)
 {
@@ -64,22 +65,52 @@ void lerUsuario(TUsuario *usuario)
     __fpurge(stdin);
     fgets(usuario->endereco.cep, 10, stdin);
   }
+
   // Tipo Usuário
   printf("\nSelecione o Tipo de Usuário: ");
   {
     int option;
-
-    while (option != 1 && option != 2)
+    char setor[100], tipo[100];
+    while (option != 1 && option != 2 && option != 3)
     {
-      printf("\n1 - Aluno\n2 - Professor\n");
+      printf("\n1 - Aluno\n2 - Professor\n3 - Técnico");
       __fpurge(stdin);
       scanf("%d", &option);
-      if (option != 1 && option != 2)
+      if (option != 1 && option != 2 && option != 3)
       {
-        printf("Opção invalida");
+        printf("Opção invalida!");
       }
     }
-    usuario->tipo_usuario = option;
+    switch (option)
+    {
+    case 1:
+      strcpy(setor, "Discente - ");
+      printf("Entre com o nome curso: ");
+      __fpurge(stdin);
+      fgets(tipo, 100, stdin);
+      strncat(setor, tipo, 100);
+      strcpy(usuario->tipo_usuario, setor);
+      break;
+    case 2:
+      strcpy(setor, "Docente - ");
+      printf("Entre com o nome do departamento: ");
+      __fpurge(stdin);
+      fgets(tipo, 100, stdin);
+      strncat(setor, tipo, 100);
+      strcpy(usuario->tipo_usuario, setor);
+      break;
+    case 3:
+      strcpy(setor, "Tecnico - ");
+      printf("Entre com o nome do departamento: ");
+      __fpurge(stdin);
+      fgets(tipo, 100, stdin);
+      strncat(setor, tipo, 100);
+      strcpy(usuario->tipo_usuario, setor);
+      break;
+    default:
+      //Não existe a possibilidade de chegar no default já cercado no while anterior
+      break;
+    }
   }
 }
 
@@ -105,7 +136,7 @@ void imprimirUsuario(TUsuario usuario)
          usuario.endereco.logradouro, usuario.endereco.numero, usuario.endereco.bairro, usuario.endereco.cidade, usuario.endereco.cep);
 
   printf("\nTipo Usuário: ");
-  usuario.tipo_usuario = 1 ? printf("Aluno\n") : printf("Professor\n");
+  printf("%s", usuario.tipo_usuario);
 }
 
 void iniciarListaUsuarios(TModuloUsuario *usuarios)

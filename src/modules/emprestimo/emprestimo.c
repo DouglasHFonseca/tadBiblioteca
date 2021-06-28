@@ -1,8 +1,11 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <stdio_ext.h>
+#include <string.h>
 #include "emprestimo.h"
+#include "data.h"
 
+/* Realiza a leitura do Emprestimo , campo a campo*/
 void lerEmprestimo(TEmprestimo *emprestimo)
 {
   printf("\nDigite o CPF: ");
@@ -46,22 +49,19 @@ void lerEmprestimo(TEmprestimo *emprestimo)
   }
 }
 
+/* Recebe um emprestimo com valor e imprime campo a */
 void imprimirEmprestimo(TEmprestimo emprestimo)
 {
-  printf("\nCPF: ");
-  printf("%s", emprestimo.cpf);
+  printf("\nCPF: %s", emprestimo.cpf);
 
-  printf("\nISBN: ");
-  printf("%s", emprestimo.ISBN);
+  printf("\nISBN: %s", emprestimo.ISBN);
 
-  printf("\nData de Emprestimo: ");
-  printf("%d/%d/%d\n", emprestimo.data_emprestimo.dia, emprestimo.data_emprestimo.mes, emprestimo.data_emprestimo.ano);
+  printf("\nData de Emprestimo: %d/%d/%d", emprestimo.data_emprestimo.dia, emprestimo.data_emprestimo.mes, emprestimo.data_emprestimo.ano);
 
-  printf("\nData de Entrega: ");
-  printf("%d/%d/%d\n", emprestimo.data_entrega.dia, emprestimo.data_entrega.mes, emprestimo.data_entrega.ano);
+  printf("\nData de Entrega: %d/%d/%d", emprestimo.data_entrega.dia, emprestimo.data_entrega.mes, emprestimo.data_entrega.ano);
 
   printf("\nData de Devolução: ");
-  if (emprestimo.data_devolucao.dia == NULL)
+  if (emprestimo.data_devolucao.dia == 0)
   {
     printf("Livro ainda não devolvido");
   }
@@ -126,4 +126,63 @@ int excluirEmprestimo(int posicao, TModuloEmprestimo *modulo3)
     modulo3->emprestimos[posicao] = modulo3->emprestimos[posicao + 1];
     return excluirEmprestimo(posicao + 1, modulo3);
   }
+}
+
+int verificaMultaDias(TEmprestimo emprestimo)
+{
+  int valid = 1;
+
+  if (emprestimo.data_entrega.ano < (data_hora_atual->tm_year + 1900))
+  {
+    valid = -1;
+  }
+  else if (emprestimo.data_entrega.mes < (data_hora_atual->tm_mon + 1))
+  {
+    valid = -1;
+  }
+  else if (emprestimo.data_entrega.dia < data_hora_atual->tm_mday)
+  {
+    valid = -1;
+  }
+
+  if (valid == -1)
+  {
+    return comparaData(emprestimo.data_entrega);
+  }
+  else
+  {
+    return 0;
+  }
+}
+
+int verificaMultas(TModuloEmprestimo *emprestimosBiblioteca, char cpf[14])
+{
+  int multas = 0;
+
+  for (int i = 0; i < emprestimosBiblioteca->indice; i++)
+  {
+    if (strcmp(emprestimosBiblioteca->emprestimos[i].cpf, cpf) == 0)
+    {
+      multas = verificaMultaDias(emprestimosBiblioteca->emprestimos[i]);
+    }
+  }
+
+  return multas;
+}
+
+int verificaEmprestimos(TModuloEmprestimo *emprestimosBiblioteca, char cpf[14])
+{
+  int count = 0;
+  for (int i = 0; i < emprestimosBiblioteca->indice; i++)
+  {
+    if (strcmp(emprestimosBiblioteca->emprestimos[i].cpf, cpf) == 0)
+    {
+      if (emprestimosBiblioteca->emprestimos[i].data_devolucao.dia == 0)
+      {
+        count++;
+      }
+    }
+  }
+
+  return count;
 }

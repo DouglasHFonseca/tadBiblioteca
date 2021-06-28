@@ -94,6 +94,13 @@ void iniciarListaLivro(TModuloLivro *modulo1)
   modulo1->indice = 0;
 }
 
+int verificaDisponibilidade(TLivro *livro)
+{
+  int percent = ((livro->quant_emprestados - livro->quantidade) / livro->quantidade) * 100;
+
+  return percent;
+}
+
 int cadastrarLivro(TLivro livro, TModuloLivro *modulo1)
 {
   if (modulo1->indice == 100)
@@ -103,7 +110,9 @@ int cadastrarLivro(TLivro livro, TModuloLivro *modulo1)
   else
   {
     modulo1->livros[modulo1->indice] = livro;
+    modulo1->livros[modulo1->indice].quant_emprestados++;
     modulo1->indice++;
+
     return 1;
   }
 }

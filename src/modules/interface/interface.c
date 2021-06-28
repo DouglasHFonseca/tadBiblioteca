@@ -6,6 +6,8 @@
 #include "livro.h"
 #include "usuario.h"
 #include "emprestimo.h"
+#include "usuario.h"
+#include "livro.h"
 
 void MSG_MENU()
 {
@@ -188,13 +190,19 @@ void SubMenuModulo3(TModuloEmprestimo *modulo3, TEmprestimo emprestimo)
     {
     case 1:
       lerEmprestimo(&emprestimo);
-      if (cadastrarEmprestimos(emprestimo, modulo3) == 1)
+      int multas = verificaMultas(modulo3, emprestimo.cpf);
+      int emprestados = verificaEmprestimos(modulo3, emprestimo.cpf);
+
+      if (multas == 0 && emprestados <= 3)
       {
-        printf("Emprestimo realizado com sucesso!");
-      }
-      else
-      {
-        printf("Não foi possível o emprestimo, limite atingido!");
+        if (cadastrarEmprestimos(emprestimo, modulo3) == 1)
+        {
+          printf("Emprestimo realizado com sucesso!");
+        }
+        else
+        {
+          printf("Não foi possível o emprestimo, limite atingido!");
+        }
       }
       break;
     case 2:

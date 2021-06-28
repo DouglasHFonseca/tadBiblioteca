@@ -13,7 +13,9 @@ int main()
   TModuloUsuario modulo2;
   TEmprestimo emprestimo;
   TModuloEmprestimo modulo3;
-  Iniciar(&modulo1);
+  iniciarListaLivro(&modulo1);
+  iniciarListaUsuarios(&modulo2);
+  iniciarListaEmprestimos(&modulo3);
 
   int opcao = 0;
   do

@@ -23,7 +23,7 @@ typedef struct usuario
   char identidade[11];
   TEndereco endereco;
   TData data_nascimento;
-  int tipo_usuario;
+  char tipo_usuario[100];
 } TUsuario;
 
 typedef struct modulo2

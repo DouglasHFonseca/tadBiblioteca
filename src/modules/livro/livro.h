@@ -34,5 +34,6 @@ void imprimirTodosLivros(TModuloLivro *modulo1);
 int pesquisarIdLivro(TLivro livro, TModuloLivro *modulo1);
 void alterarLivro(int indice, TLivro livro, TModuloLivro *modulo1);
 int excluirLivro(int posicao, TModuloLivro *modulo1);
+int verificaDisponibilidade(TLivro *livro);
 
 #endif // LIVRO_H_INCLUDED

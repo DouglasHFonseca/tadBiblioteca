@@ -21,6 +21,7 @@ typedef struct modulo3
   int indice;
 } TModuloEmprestimo;
 
+// FUNÇÕES BÁSICAS
 void lerEmprestimo(TEmprestimo *emprestimo);
 void imprimirEmprestimo(TEmprestimo emprestimo);
 void iniciarListaEmprestimos(TModuloEmprestimo *emprestimos);
@@ -29,5 +30,10 @@ void imprimirTodosEmprestimos(TModuloEmprestimo *modulo3);
 int pesquisarIdEmprestimo(TEmprestimo emprestimo, TModuloEmprestimo *modulo3);
 void alterarEmprestimo(int indece, TEmprestimo emprestimo, TModuloEmprestimo *modulo3);
 int excluirEmprestimo(int index, TModuloEmprestimo *modulo3);
+
+// FUNÇÕES AVANÇADAS
+int verificaMultas(TModuloEmprestimo *emprestimosBiblioteca, char cpf[14]);
+int verificaMultaDias(TEmprestimo emprestimo);
+int verificaEmprestimos(TModuloEmprestimo *emprestimosBiblioteca, char cpf[14]);
 
 #endif // EMPRESTIMO_H_INCLUDED
